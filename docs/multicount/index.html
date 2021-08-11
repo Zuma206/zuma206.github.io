@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+		<link rel="stylesheet" href="../main.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Multicount - API Docs</title>
+  </head>
+  <body>
+		
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<div class="container"><a class="navbar-brand" href="https://multicount.james1903.repl.co/pages/home.html">
+				<img src="https://multicount.james1903.repl.co/assets/logo2.png" alt="Multicount" style="width:40px;" id="funnyhaha">
+			</a>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="https://multicount.james1903.repl.co/pages/home.html">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://multicount.james1903.repl.co/pages/login.html">Login</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://multicount.james1903.repl.co/dashboard.php">Dashboard</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://multicount.james1903.repl.co/pages/signup.html">Signup</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://multicount.james1903.repl.co/functions/leave.php">Logout</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#">API Docs</a>
+				</li>
+			</ul></div>
+			
+		</nav>
+
+		<div class="jumbotron">
+			<div class="container">
+				<h1>API Docs</h1>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="alert alert-danger" role="alert">WARNING: Logging passwords is against the API Terms and the law.</div>
+			<h4>How it works</h4>
+			<p>Sending a request to the API can be done via a terminal curl command or via a requests library for your prefered programming language. These docs will show an example for Python, using the requests library. The API returns a JSON file that includes information on the requested user.</p>
+			<h4>API key & Terms of Service</h4>
+			<p>In order to send a request to the server, you need to provide and API key to help validate and log your request. Your API key comes with your multicount, but to get it you need to agree to the Terms of Service below. Please retrieve your API key and save it somewhere securely in your program, where it cannot be accessed by anyone not working on your project.</p>
+			<div class="alert alert-warning" role="alert">Don't let anyone get your API key, as it will mean they can make requests in your name.</div>
+			<a class="btn btn-success" href="https://multicount.james1903.repl.co/functions/newapikey.php">Get API key</a><br>
+			<h4>Structuring a request</h4>
+			<p>To send a request, you need to goto a specific PHP page, and enter URL parameters to authenticate yourself, get information on a user, and validate that the afformentioned user is real. The following URL parameters are needed:</p>
+			<ul>
+				<li>name - this is your username on multicount</li>
+				<li>key - the API key of the 'name' username</li>
+				<li>user - the username that you want info on</li>
+				<li>passd - the 'user' user's password (set to random text if unknown)</li>
+			</ul>
+			<h4>Sending the request: Python</h4><br>
+			
+<code>import requests as rq</code><br>
+<code>import json as jn</code><br><br>
+
+<code>#set api url as variable</code><br>
+<code>url = "https://multicount.james1903.repl.co/functions/JSON_User_API.php"</code><br><br>
+
+<code># set url params as variables:</code><br>
+<code>devUsername = "Zuma206"</code><br>
+<code>devKey = "JYDHjEHteSGGuTed63W"</code><br>
+<code>Username = "Zuma206"</code><br>
+<code>Password = "passwordIsIncorrect123"</code><br><br>
+
+<code># put url params into dictionary (use exact names)</code><br>
+<code>params = {</code><br>
+<code>	'name' : devUsername,</code><br>
+<code>	'key' : devKey,</code><br>
+<code>	'user' : Username,</code><br>
+<code>	'passd' : Password</code><br>
+<code>}</code><br><br>
+
+<code># run request and get result as JSON</code><br>
+<code>result = rq.get(url=url, params=params).text</code><br><br>
+
+<code># decode json into python dictionary</code><br>
+<code>result = jn.loads(result)</code><br><br><br>
+			<p>The above code ends in <code>result</code> being set as a dictionary filled with data on the request. Below is a breakdown of what the info means:</p>
+			<ul>
+				<li><code>result['exists']</code> is a boolean to show weather the 'user' user exists</li>
+				<li><code>result['picture']</code> is a string url to the 'user' user's profile picture</li>
+				<li><code>result['verify']</code> is a boolean showing wheather the provided password is valid</li>
+				<li><code>result['confirmed']</code> is a boolean stating wheather the 'user' user has confirmed their email address</li>
+				<li><code>result['recieved']</code> is the time and date the request was recieved</li>
+				<li><code>result['address']</code> is the email address of the 'user' user</li>
+			</ul>
+		</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  </body>
+</html>
