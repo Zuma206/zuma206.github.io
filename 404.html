@@ -50,6 +50,7 @@
 		</div>
         <div class="container">
             <p>This one's on you. Try checking the URL you entered, or goto the project page to find what you're looking for.</p>
+            <p id="errorfunny"></p>
         </div>
     <!-- jQuery -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -59,5 +60,12 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script>
+        x = document.getElementById('errorfunny');
+        y = window.location.href.split('/')[-1];
+        var z = new RegExp("/", "g")
+        y = y.replace(z, "")
+        x.innerText = y;
+    </script>
   </body>
 </html>
