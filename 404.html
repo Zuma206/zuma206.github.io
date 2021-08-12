@@ -49,7 +49,6 @@
 			</div>
 		</div>
         <div class="container">
-            <p>This one's on you. Try checking the URL you entered, or goto the project page to find what you're looking for.</p>
             <p id="errorfunny"></p>
         </div>
     <!-- jQuery -->
@@ -61,11 +60,11 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <script>
-        x = document.getElementById('errorfunny');
-        y = window.location.href.split('/')[-1];
-        var z = new RegExp("/", "g")
-        y = y.replace(z, "")
-        x.innerText = y;
+        errorText = document.getElementById('errorfunny');
+        url = window.location.href.split("/");
+        url = url[url.length-1];
+        console.log(url);
+        errorText.innerHTML = "Monke looked really hard, but monke couldn't find <code>"+url+"</code> anywhere.";
     </script>
   </body>
 </html>
