@@ -53,18 +53,12 @@
 }
 
 .glow {
-	text-transform: none;
-	font-family: 'Fugaz One', cursive;
   color: #fff;
-  -webkit-animation: glow 3s ease-in-out infinite alternate;
-  -moz-animation: glow 3s ease-in-out infinite alternate;
-  animation: glow 3s ease-in-out infinite alternate;
+  text-transform: none;
+	font-family: 'Fugaz One', cursive;
 }
 
-.glow-lite {
-	text-transform: none;
-	font-family: 'Fugaz One', cursive;
-  color: #fff;
+.glow:hover {
   -webkit-animation: glow 3s ease-in-out infinite alternate;
   -moz-animation: glow 3s ease-in-out infinite alternate;
   animation: glow 3s ease-in-out infinite alternate;
@@ -75,10 +69,7 @@
 }
 
 @media only screen and (hover: none) and (pointer: coarse){
-	.glow {
-		-webkit-animation: none;
-		-moz-animation: none;
-		animation: none;
+	.glow:hover {
 		text-shadow: 0 0 30px #8600ff;
 	}
 	.custom-gradient {
@@ -86,7 +77,6 @@
     -moz-animation: none;
     -o-animation: none;
     animation: none;
-		background-size: auto;
 	}
 }
 
