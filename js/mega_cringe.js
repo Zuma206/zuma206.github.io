@@ -8,7 +8,7 @@ function loadDoc() {
 						x.innerText = randomx;
        }
     };
-    xhttp.open("GET", "https://web.zuma206.repl.co/js/cringe.txt", true);
+    xhttp.open("GET", "https://zuma206.github.io/js/cringe.txt", true);
     xhttp.send();
 }
 
