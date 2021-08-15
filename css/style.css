@@ -8,7 +8,7 @@
 }
 
 #splash {
-	position: fixed;
+	position: absolute;
 	animation: splash-ani 1.5s ease infinite;
 }
 
